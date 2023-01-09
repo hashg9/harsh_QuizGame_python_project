@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Quiz</h1>
+    <hr>
+    <div>
+        <form action="/" method="POST">
+            <p>Question: {{shuffled_question.question}}</p>
+            <ol type="A">
+                <input type="hidden" name="correct_ans" value="{{mcq.answer}}">
+                <li><input type="submit" name="option" id="A" value="{{shuffled_question.op_1}}"></li><br>
+                <li><input type="submit" name="option" id="A" value="{{shuffled_question.op_2}}"></li><br>
+                <li><input type="submit" name="option" id="A" value="{{shuffled_question.op_3}}"></li><br>
+                <li><input type="submit" name="option" id="A" value="{{shuffled_question.op_4}}"></li><br>
+            </ol>
+        </form>
+    </div>
+</body>
+
+</html>

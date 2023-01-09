@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Page</title>
+</head>
+
+<body>
+    <div>
+        <h1>Admin Page</h1>
+    </div>
+    <br>
+    <hr>
+    <br>
+    <div>
+        <h1>Add Questions</h1>
+    </div>
+    <div>
+        <form method="POST" action="/admin">
+            <input type="number" placeholder="Choose question id" name="q_id">
+            <input type="text" placeholder="Enter question" name="question">
+            <input type="text" placeholder="Enter option 1" name="op_1">
+            <input type="text" placeholder="Enter option 2" name="op_2">
+            <input type="text" placeholder="Enter option 3" name="op_3">
+            <input type="text" placeholder="Enter option 4" name="op_4">
+            <input type="text" placeholder="Enter correct answer" name="ans">
+            <input type="submit" value="Add">
+        </form>
+    </div>
+    <br>
+    <hr>
+    <br>
+    <div>
+        <h1>Update Questions Here</h1>
+    </div>
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Question</th>
+                    <th>Option1</th>
+                    <th>Option2</th>
+                    <th>Option3</th>
+                    <th>Option4</th>
+                    <th>Answer</th>
+                </tr>
+            </thead>
+        </table>
+        {% for mcq in mcqList %}
+        <form method="POST" action="./update">
+            <input type="hidden" name="old_question" value="{{mcq.question}}">
+            <input type="text" name="new_question" value="{{mcq.question}}">
+            <input type="text" name="new_option1" value="{{mcq.option1}}">
+            <input type="text" name="new_option2" value="{{mcq.option2}}">
+            <input type="text" name="new_option3" value="{{mcq.option3}}">
+            <input type="text" name="new_option4" value="{{mcq.option4}}">
+            <input type="text" name="new_answer" value="{{mcq.answer}}">
+            <input type="submit" value="Update">
+        </form>
+        {% endfor %}
+    </div>
+    <br>
+    <hr>
+    <br>
+    <div>
+        <h1>Delete a question</h1>
+    </div>
+    <div>
+        {% for mcq in mcqList %}
+        <form action="./delete" method="POST">
+            <p>{{mcq.question}}
+                <input type="hidden" name="del_question" value="{{mcq.question}}">
+                <input type="submit" value="Delete">
+            </p>
+        </form>
+
+        {% endfor %}
+
+    </div>
+    <div>
+        <h1>List of Questions</h1>
+    </div>
+    <br>
+    <hr>
+    <br>
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>q_id</th>
+                    <th>Question</th>
+                    <th>Option1</th>
+                    <th>Option2</th>
+                    <th>Option3</th>
+                    <th>Option4</th>
+                    <th>Answer</th>
+                </tr>
+            </thead>
+
+
+            <tbody>
+                {% for mcq in mcqList %}
+                <tr>
+                    <td>{{Questions.q_id}}</td>
+                    <td>{{Questions.question}}</td>
+                    <td>{{Questions.op_1}}</td>
+                    <td>{{Questions.op_2}}</td>
+                    <td>{{Questions.op_3}}</td>
+                    <td>{{Questions.op_4}}</td>
+                    <td>{{Questions.ans}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>
