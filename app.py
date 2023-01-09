@@ -73,7 +73,7 @@ def admin():
     ques_list = Questions.query.all()
     return render_template("admin.html", ques_list=ques_list)
 
-@app.route("/update")
+@app.route("/update",methods=["POST","GET"])
 def update():
         new_question = request.form.get("new_question")
         newOp_1 = request.form.get("newOp_1")
@@ -105,7 +105,7 @@ def update():
         db.session.commit()
         return redirect("/admin")
 
-@app.route("/delete",methods=["POST"], )
+@app.route("/delete",methods=["POST"] )
 def delete():
         question = request.form.get("del_question")
         mcq = Questions.query.filter_by(question=question).first()
